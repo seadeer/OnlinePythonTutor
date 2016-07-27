@@ -2,6 +2,7 @@
 FROM resin/raspberrypi-python:latest
 # Enable systemd
 ENV INITSYSTEM on
+RUN echo pytutor > /etc/hostname
 
 #Create app folder
 RUN mkdir -p /usr/src/pytutor
@@ -12,6 +13,6 @@ RUN easy_install pip
 RUN pip install bottle
 
 COPY . /usr/src/pytutor
-EXPOSE 8003
+EXPOSE 8080
 
 CMD ["python", "bottle-server.py"]
